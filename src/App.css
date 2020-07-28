@@ -6,6 +6,14 @@
   padding:3% 5%;
 }
 
+.container1{
+  margin:2% 3%;
+  background-color:  #262529;
+  border-radius:10px;
+  box-shadow: 0 0 3px #0a0a0a;
+  padding:30px;
+}
+
 .quit{
   background-color: #CF6679;
   border:none;
