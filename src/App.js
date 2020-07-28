@@ -29,13 +29,13 @@ export default class App extends Component{
       this.setState({counter:(this.state.counter+100)})
     }
     else if(diff>0 && diff<=4){
-      this.setState({color:"#FF8A80", percentage:75})
+      this.setState({color:"#EF5350", percentage:75})
     }
     else if(diff>4 && diff<=15){
-      this.setState({color:"#F4FF81", percentage:50})
+      this.setState({color:"#FFEB3B", percentage:50})
     }
     else{
-      this.setState({color:"#80D8FF", percentage:25})
+      this.setState({color:"#03DAC5", percentage:25})
     }
   }
 
@@ -47,7 +47,7 @@ export default class App extends Component{
       <div className="container">
         {count.map((c,k) => (<div key={k} className="container1">
             <Form GuessTop={guess =>this.updateState(guess)} counter={k}/>
-            <Progress color={'#B9F6CA'} percentage={100}/>
+            <Progress color={'#4CAF50'} percentage={100}/>
           </div>))
         }
         <div className="container1">
