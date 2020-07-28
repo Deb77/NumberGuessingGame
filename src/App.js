@@ -20,16 +20,16 @@ export default class App extends Component{
     const diff = Math.abs(guess - this.state.Random)
     console.log(diff)
     if(diff === 0 ){
-      this.setState({color:"#00FF00",percentage:100})
+      this.setState({color:"#B9F6CA",percentage:100})
     }
     else if(diff>0 && diff<=4){
-      this.setState({color:"#FF0000", percentage:75})
+      this.setState({color:"#FF8A80", percentage:75})
     }
     else if(diff>4 && diff<=15){
-      this.setState({color:"#FFFF00", percentage:50})
+      this.setState({color:"#F4FF81", percentage:50})
     }
     else{
-      this.setState({color:"#00FFFF", percentage:25})
+      this.setState({color:"#80D8FF", percentage:25})
     }
   }
 
@@ -42,7 +42,6 @@ export default class App extends Component{
           <Form GuessTop={guess =>this.updateState(guess)}/>
           <Progress color={this.state.color} percentage={this.state.percentage}/>
         </div>
-        <p>Hot</p>
       </div>
       <div className="btnc">
         <p className="copy">&copy;DeborahMendes2020</p>
