@@ -10,17 +10,23 @@ export default class App extends Component{
     this.state = {
       Random:0,
       color:"fff",
-      percentage:0
+      percentage:0,
+      count:[],
+      counter:200
     }
   }
   componentDidMount(){
-    this.setState({Random:(Math.floor(Math.random()*100)),color:"#fff", percentage:0})
+    this.setState({Random:(Math.floor(Math.random()*100)+1),color:"#fff", percentage:0})
   }
   updateState(guess){
     const diff = Math.abs(guess - this.state.Random)
+    const counter = this.state.counter;
+    console.log(counter)
     console.log(diff)
     if(diff === 0 ){
-      this.setState({color:"#B9F6CA",percentage:100})
+      
+      this.setState(prevState => ({color:"#fff", percentage:0,count:[...prevState.count,diff], Random:(Math.floor((Math.random() * (counter)) + 1))}))
+      this.setState({counter:(this.state.counter+100)})
     }
     else if(diff>0 && diff<=4){
       this.setState({color:"#FF8A80", percentage:75})
@@ -34,12 +40,18 @@ export default class App extends Component{
   }
 
   render(){
+    const count = this.state.count;
     return(
       <div className="App">
       <Navbar/>
       <div className="container">
+        {count.map((c,k) => (<div key={k} className="container1">
+            <Form GuessTop={guess =>this.updateState(guess)} counter={k}/>
+            <Progress color={'#B9F6CA'} percentage={100}/>
+          </div>))
+        }
         <div className="container1">
-          <Form GuessTop={guess =>this.updateState(guess)}/>
+          <Form GuessTop={guess =>this.updateState(guess)} counter={this.state.counter}/>
           <Progress color={this.state.color} percentage={this.state.percentage}/>
         </div>
       </div>
